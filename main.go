@@ -21,6 +21,9 @@ func main() {
 	getRouter := rt.Methods(http.MethodGet).Subrouter()
 	getRouter.HandleFunc("/translate/{id}", dh.GetTranslation)
 
+	putRouter := rt.Methods(http.MethodPut).Subrouter()
+	putRouter.HandleFunc(("/add/{id}/{translation}"), dh.AddTranslation)
+
 	s := &http.Server{
 		Handler:        rt,
 		Addr:           ":8000",

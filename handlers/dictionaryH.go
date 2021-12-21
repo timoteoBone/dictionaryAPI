@@ -22,3 +22,10 @@ func (t *Translation) GetTranslation(rw http.ResponseWriter, r *http.Request) {
 	t.l.Println(dictionary.Translation(vars["id"]))
 
 }
+
+func (t *Translation) AddTranslation(rw http.ResponseWriter, r *http.Request) {
+
+	vars := mux.Vars(r)
+	dictionary.EnglishToSpanish[vars["id"]] = vars["translation"]
+	t.l.Println(dictionary.EnglishToSpanish["id"])
+}
